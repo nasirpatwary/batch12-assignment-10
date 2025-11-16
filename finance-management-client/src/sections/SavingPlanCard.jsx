@@ -39,7 +39,7 @@ const SavingPlanCard = () => {
   }, []);
 
   return (
-    <div className="md:absolute bg-base-100 animate__animated animate__fadeInUp md:left-1/2 md:top-1/2 lg:top-20 transform md:-translate-x-1/5 rounded-xl w-full h-fit max-w-xs shadow p-5 mx-auto">
+    <div className="md:absolute bg-base-100 animate__animated animate__fadeInUp md:left-1/2 md:top-1/2 lg:top-12 transform md:-translate-x-1/5 rounded-xl w-full h-fit max-w-xs shadow p-5 mx-auto">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">Saving Plan</h3>
         <button className="text-primary text-sm font-medium hover:underline">

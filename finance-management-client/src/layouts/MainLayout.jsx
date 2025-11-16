@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import DarkMode from "../sections/DarkMode";
+import DarkMode from "../shared/DarkMode";
 const MainLayout = () => {
   useEffect(() => {
     AOS.init({
@@ -11,7 +11,7 @@ const MainLayout = () => {
     });
   }, []);
   return (
-    <>
+    <div className="dark:bg-[#000000]">
       <header className="h-16">
         <Navbar />
       </header>
@@ -20,7 +20,7 @@ const MainLayout = () => {
         <DarkMode />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

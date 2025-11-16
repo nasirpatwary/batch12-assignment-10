@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+ @plugin "daisyui" {
+   themes: light --default, dark --prefersdark;
+ }
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -10,7 +12,7 @@
 * :focus{
   outline: none;
 }
-@custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+@custom-variant dark (&:where(.dark, .dark *));
   
 .testimonial-shadow {
   transition: box-shadow 0.3s ease; 
@@ -36,17 +38,4 @@
 }
 .active{
   @apply text-primary font-medium
-}
-
-
-@theme {
-  --animate-wiggle: wiggle 5s ease-in-out infinite;
-@keyframes wiggle {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15%);
-  }
-}
 }
