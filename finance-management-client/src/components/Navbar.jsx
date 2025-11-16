@@ -64,7 +64,6 @@ const Navbar = () => {
     <nav className="backdrop-blur-sm shadow fixed w-full z-50 bg-white/70 dark:bg-gray-900/70">
       <Container>
         <div className="navbar p-0">
-          {/* Navbar Start */}
           <div data-aos="fade-right" className="navbar-start">
             <Link
               to="/"
@@ -73,15 +72,10 @@ const Navbar = () => {
               <img className="size-10" src={logo} alt="logo" /> Financial
             </Link>
           </div>
-
-          {/* Desktop Menu */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu text-base menu-horizontal gap-4">{navLinks}</ul>
           </div>
-
-          {/* Navbar End */}
           <div className="navbar-end">
-            {/* Mobile Menu */}
             <div className="lg:hidden">
               <div className="text-2xl relative z-50 text-gray-700 dark:text-gray-200">
                 {open ? (
@@ -96,8 +90,6 @@ const Navbar = () => {
                   />
                 )}
               </div>
-
-              {/* Mobile Sliding Menu */}
               <div
                 className={`fixed z-10 overflow-y-auto space-y-6 p-4 top-16 right-0 w-full md:w-1/2 h-screen 
                   bg-white dark:bg-gray-900 backdrop-blur-sm shadow-lg 
@@ -108,8 +100,6 @@ const Navbar = () => {
                 <ul className="flex flex-col text-base space-y-3 text-gray-700 dark:text-gray-200">
                   {navLinks}
                 </ul>
-
-                {/* Settings Dropdown */}
                 <div
                   onClick={() => setDrop(!drop)}
                   className="text-gray-700 dark:text-gray-200"
@@ -124,6 +114,7 @@ const Navbar = () => {
                       {user ? (
                         <div className="space-y-4 text-center">
                           <img
+                          referrerPolicy="no-referrer"
                             className="size-10 mx-auto rounded-full object-cover cursor-pointer"
                             src={
                               user?.photoURL ||
@@ -148,6 +139,7 @@ const Navbar = () => {
                       ) : (
                         <div className="flex flex-col space-y-2">
                           <img
+                            referrerPolicy="no-referrer"
                             className="size-10 mx-auto rounded-full object-cover cursor-pointer"
                             src={
                               user?.photoURL ||
@@ -178,13 +170,12 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-
-            {/* Desktop Dropdown Avatar */}
             <div
               onClick={() => setMenu(!menu)}
               className="hidden lg:block text-gray-800 dark:text-gray-200"
             >
               <img
+                referrerPolicy="no-referrer"
                 className="size-10 rounded-full object-cover cursor-pointer"
                 src={
                   user?.photoURL ||
@@ -201,6 +192,7 @@ const Navbar = () => {
                   {user ? (
                     <div className="space-y-4 text-center">
                       <img
+                      referrerPolicy="no-referrer"
                         className="size-10 mx-auto rounded-full object-cover cursor-pointer"
                         src={
                           user?.photoURL ||
@@ -226,6 +218,7 @@ const Navbar = () => {
                   ) : (
                     <div className="flex flex-col space-y-4">
                       <img
+                      referrerPolicy="no-referrer"
                         className="size-10 mx-auto rounded-full object-cover cursor-pointer"
                         src={
                           user?.photoURL ||
