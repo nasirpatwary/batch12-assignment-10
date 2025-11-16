@@ -1,3 +1,4 @@
 node_modules
 .env
 finance-management.json
+.vercel

@@ -3,7 +3,7 @@ import { MdOutlineLightMode, MdDarkMode } from "react-icons/md";
 
 const DarkMode = () => {
   const [theme, setTheme] = useState(() => {
-    localStorage.getItem("theme") === "dark";
+   return localStorage.getItem("theme") === "dark";
   });
   useEffect(() => {
     const root = document.documentElement;
