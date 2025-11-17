@@ -11,7 +11,7 @@ const TableCart = ({ transaction }) => {
 
   const handleDelete = (id) => {
     toast((t) => (
-      <div className="space-y-4 text-gray-900 dark:text-gray-200">
+      <div className="space-y-4 text-gray-900 dark:text-gray-600">
         <p>Are you sure you want to delete?</p>
         <div className="flex justify-end gap-4">
           <button
