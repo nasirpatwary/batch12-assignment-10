@@ -150,14 +150,14 @@ const Navbar = () => {
 
                           <ButtonComponent
                             to="/login"
-                            className="btn-sm border-primary text-gray-700 dark:text-gray-200"
+                            className="btn-sm border-primary text-gray-700"
                           >
                             Login
                           </ButtonComponent>
 
                           <ButtonComponent
                             to="/register"
-                            className="btn-sm border-primary text-gray-700 dark:text-gray-200"
+                            className="btn-sm border-primary text-gray-700"
                           >
                             Register
                           </ButtonComponent>
@@ -229,14 +229,14 @@ const Navbar = () => {
 
                       <ButtonComponent
                         to="/login"
-                        className="btn-sm border-primary text-gray-700 dark:text-gray-200"
+                        className="btn-sm border-primary text-gray-700"
                       >
                         Login
                       </ButtonComponent>
 
                       <ButtonComponent
                         to="/register"
-                        className="btn-sm border-primary text-gray-700 dark:text-gray-200"
+                        className="btn-sm border-primary text-gray-700"
                       >
                         Register
                       </ButtonComponent>

@@ -12,25 +12,22 @@ import Container from "../shared/Container";
 
 const Login = () => {
   const { signInUser, user } = useAuth();
-  const [captcha, setCaptcha] = useState(null);
   const [showEye, setShowEye] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const emailRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate(location.state ? location.state : "/");
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (user) {
+      navigate(location.state ? location.state : "/");
+    }
+  }, [user]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    if (!captcha) return toast.error("Please accept the reCAPTCHA!");
-
     try {
       await signInUser(email, password);
       toast.success("Login successfully!");
@@ -76,7 +73,7 @@ const Login = () => {
                   placeholder="Your Password"
                   required
                 />
-                <div className="absolute right-6 top-3 z-10 cursor-pointer peer-focus:text-primary">
+                <div className="absolute right-6 top-3 z-10 dark:text-gray-300 cursor-pointer peer-focus:text-primary">
                   {showEye ? (
                     <FaRegEye size={16} onClick={() => setShowEye(!showEye)} />
                   ) : (
@@ -92,10 +89,6 @@ const Login = () => {
                   Forgot password?
                 </a>
               </div>
-              <ReCAPTCHA
-                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-                onChange={(token) => setCaptcha(token)}
-              />
               <button type="submit" className="btn btn-neutral mt-4">
                 Login
               </button>
