@@ -42,7 +42,7 @@ const Register = () => {
         image: user?.photoURL,
       };
 
-      await axioPublic.post(`/users`, newUser);
+      await axioPublic.post(`/api/users`, newUser);
 
       try {
         await logOutUser();
@@ -55,7 +55,7 @@ const Register = () => {
       navigate("/");
       form.reset();
     } catch (error) {
-      toast.error("auth/email-already-in-use");
+      toast.error("auth email already in use");
     }
   };
 

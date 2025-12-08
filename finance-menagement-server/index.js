@@ -52,7 +52,7 @@ async function run() {
   try {
     await client.connect();
     // userCollection
-    app.post("/users", async (req, res) => {
+    app.post("/api/users", async (req, res) => {
       const newUser = req.body;
       const query = { email: newUser.email };
       const exist = await userCollection.findOne(query);
@@ -65,7 +65,7 @@ async function run() {
     });
 
     // financialCollection
-    app.get("/transactions", verifyFBToken, async (req, res) => {
+    app.get("/api/transactions", verifyFBToken, async (req, res) => {
       const { email } = req.query;
       const query = {};
       if (email) {
@@ -79,25 +79,25 @@ async function run() {
         .toArray();
       res.send(result);
     });
-    app.get("/transactions/:id", verifyFBToken, async (req, res) => {
+    app.get("/api/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const query = { _id: new ObjectId(id) };
       const result = await financialCollection.findOne(query);
       res.send(result);
     });
-    app.post("/transactions", verifyFBToken, async (req, res) => {
+    app.post("/api/transactions", verifyFBToken, async (req, res) => {
       const newTransaction = req.body;
       const result = await financialCollection.insertOne(newTransaction);
       res.send(result);
     });
-    app.delete("/transactions/:id", verifyFBToken, async (req, res) => {
+    app.delete("/api/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const query = { _id: new ObjectId(id) };
       const result = await financialCollection.deleteOne(query);
       res.send(result);
     });
 
-    app.patch("/transactions/:id", verifyFBToken, async (req, res) => {
+    app.patch("/api/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const updateData = req.body;
       const filter = { _id: new ObjectId(id) };
@@ -108,7 +108,7 @@ async function run() {
       res.send(result);
     });
 
-    app.get("/category-total/:category", verifyFBToken, async (req, res) => {
+    app.get("/api/category-total/:category", verifyFBToken, async (req, res) => {
       const category = req.params.category;
       const result = await financialCollection
         .aggregate([
@@ -126,7 +126,7 @@ async function run() {
       const totalAmount = result.length > 0 ? result[0].total : 0;
       res.send({ totalAmount });
     });
-    app.get("/chartcollections", verifyFBToken, async (req, res) => {
+    app.get("/api/chartcollections", verifyFBToken, async (req, res) => {
       const users = await userCollection.estimatedDocumentCount();
       const financials = await financialCollection.estimatedDocumentCount();
       const result = await financialCollection
@@ -142,7 +142,7 @@ async function run() {
       const revenue = result.length > 0 ? result[0].total : 0;
       res.send({ revenue, users, financials });
     });
-    app.get("/reports/category-summary", verifyFBToken, async (req, res) => {
+    app.get("/api/reports/category-summary", verifyFBToken, async (req, res) => {
       const result = await financialCollection
         .aggregate([
           {
@@ -178,6 +178,4 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+module.exports = app;

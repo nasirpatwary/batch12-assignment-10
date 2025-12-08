@@ -16,7 +16,7 @@ const SocialLogin = () => {
         name: user?.displayName,
         image: user?.photoURL,
       };
-      await axioPublic.post(`/users`, newUser);
+      await axioPublic.post(`/api/users`, newUser);
       toast.success("SignIn successfully!");
       navigate(location.state ? location.state : "/");
     } catch (error) {
