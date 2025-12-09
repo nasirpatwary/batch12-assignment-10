@@ -12,7 +12,7 @@ const useGetTransaction = () => {
   } = useQuery({
     queryKey: ["transactions", user.email],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/api/transactions?email=${user?.email}`);
+      const { data } = await axiosSecure.get(`/transactions?email=${user?.email}`);
       return data;
     },
   });

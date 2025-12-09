@@ -7,7 +7,7 @@ const useDeleteTran = () => {
     const queryClient = useQueryClient()
     const {mutateAsync} = useMutation({
         mutationFn: async (id) => {
-            await axiosSecure.delete(`/api/transactions/${id}`);
+            await axiosSecure.delete(`/transactions/${id}`);
         },
         onSuccess: () =>{
             toast.success("Deleted successfully!")

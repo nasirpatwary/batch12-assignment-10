@@ -50,9 +50,9 @@ async function run() {
   const userCollection = db.collection("users");
   const financialCollection = db.collection("financials");
   try {
-    await client.connect();
+    // await client.connect();
     // userCollection
-    app.post("/api/users", async (req, res) => {
+    app.post("/users", async (req, res) => {
       const newUser = req.body;
       const query = { email: newUser.email };
       const exist = await userCollection.findOne(query);
@@ -63,9 +63,8 @@ async function run() {
       const result = await userCollection.insertOne(newUser);
       res.send(result);
     });
-
     // financialCollection
-    app.get("/api/transactions", verifyFBToken, async (req, res) => {
+    app.get("/transactions", verifyFBToken, async (req, res) => {
       const { email } = req.query;
       const query = {};
       if (email) {
@@ -79,25 +78,25 @@ async function run() {
         .toArray();
       res.send(result);
     });
-    app.get("/api/transactions/:id", verifyFBToken, async (req, res) => {
+    app.get("/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const query = { _id: new ObjectId(id) };
       const result = await financialCollection.findOne(query);
       res.send(result);
     });
-    app.post("/api/transactions", verifyFBToken, async (req, res) => {
+    app.post("/transactions", verifyFBToken, async (req, res) => {
       const newTransaction = req.body;
       const result = await financialCollection.insertOne(newTransaction);
       res.send(result);
     });
-    app.delete("/api/transactions/:id", verifyFBToken, async (req, res) => {
+    app.delete("/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const query = { _id: new ObjectId(id) };
       const result = await financialCollection.deleteOne(query);
       res.send(result);
     });
 
-    app.patch("/api/transactions/:id", verifyFBToken, async (req, res) => {
+    app.patch("/transactions/:id", verifyFBToken, async (req, res) => {
       const { id } = req.params;
       const updateData = req.body;
       const filter = { _id: new ObjectId(id) };
@@ -108,7 +107,7 @@ async function run() {
       res.send(result);
     });
 
-    app.get("/api/category-total/:category", verifyFBToken, async (req, res) => {
+    app.get("/category-total/:category", verifyFBToken, async (req, res) => {
       const category = req.params.category;
       const result = await financialCollection
         .aggregate([
@@ -126,7 +125,7 @@ async function run() {
       const totalAmount = result.length > 0 ? result[0].total : 0;
       res.send({ totalAmount });
     });
-    app.get("/api/chartcollections", verifyFBToken, async (req, res) => {
+    app.get("/chartcollections", verifyFBToken, async (req, res) => {
       const users = await userCollection.estimatedDocumentCount();
       const financials = await financialCollection.estimatedDocumentCount();
       const result = await financialCollection
@@ -142,7 +141,7 @@ async function run() {
       const revenue = result.length > 0 ? result[0].total : 0;
       res.send({ revenue, users, financials });
     });
-    app.get("/api/reports/category-summary", verifyFBToken, async (req, res) => {
+    app.get("/reports/category-summary", verifyFBToken, async (req, res) => {
       const result = await financialCollection
         .aggregate([
           {
@@ -178,4 +177,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-module.exports = app;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});

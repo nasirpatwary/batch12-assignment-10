@@ -10,7 +10,12 @@ const DetailsPage = () => {
   if (isLoading) return <LoadingSpinner />;
   if (isError) return <ErrorPage />;
 
-  return <DetailsTable {...transactions} />
+  return (
+    <>
+    <title>Finance || Details{id}</title>
+      <DetailsTable {...transactions} />
+    </>
+  );
 };
 
 export default DetailsPage;

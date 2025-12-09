@@ -42,7 +42,7 @@ const Register = () => {
         image: user?.photoURL,
       };
 
-      await axioPublic.post(`/api/users`, newUser);
+      await axioPublic.post(`/users`, newUser);
 
       try {
         await logOutUser();

@@ -9,7 +9,7 @@ const useDeatils = (id) => {
   } = useQuery({
     queryKey: ["transactions", id],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/api/transactions/${id}`
+      const { data } = await axiosSecure.get(`/transactions/${id}`
       );
       return data;
     },

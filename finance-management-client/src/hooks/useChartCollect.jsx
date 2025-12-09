@@ -6,7 +6,7 @@ const useChartCollect = () => {
     const {data = {}} = useQuery({
         queryKey: ["chart-collection"],
         queryFn: async () => {
-            const { data } = await axiosSecure.get("/api/chartcollections");
+            const { data } = await axiosSecure.get("/chartcollections");
             return data
         }
     })

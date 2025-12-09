@@ -9,7 +9,7 @@ export const usePatchTran = () => {
         mutationFn: async (updateDoc) => {
             const { id, ...body } = updateDoc;
             console.log(body)
-            await axiosSecure.patch(`/api/transactions/${id}`, body);
+            await axiosSecure.patch(`/transactions/${id}`, body);
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["transactions"] });

@@ -10,7 +10,7 @@ const usePieChart = () => {
   } = useQuery({
     queryKey: ["category-summary"],
     queryFn: async () => {
-      const { data } = await axioSecure.get("/api/reports/category-summary");
+      const { data } = await axioSecure.get("/reports/category-summary");
       return data;
     },
   });
