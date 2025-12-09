@@ -14,7 +14,7 @@ const Register = () => {
   const axioPublic = useAxiosPublic();
   const [showEye, setShowEye] = useState(false);
   const navigate = useNavigate();
-  const { createUser, updateUserProfile, logOutUser, setUser } = useAuth();
+  const { createUser, updateUserProfile, logOutUser } = useAuth();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -47,7 +47,6 @@ const Register = () => {
       try {
         await logOutUser();
         toast.success("Registered successfully! Please verify your email.");
-        setUser(null);
       } catch (error) {
         if (error) toast.error(error);
       }
